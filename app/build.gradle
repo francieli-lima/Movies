@@ -58,6 +58,11 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
+    //Layout
+    compile 'com.android.support:design:27.0.2'
+    compile 'com.android.support:recyclerview-v7:27.0.2'
+    compile 'com.android.support:cardview-v7:27.0.2'
+
     //Arch support
     implementation "android.arch.lifecycle:runtime:1.1.0"
     implementation "android.arch.lifecycle:extensions:1.1.0"
@@ -73,4 +78,7 @@ dependencies {
     //ReactiveX
     implementation 'io.reactivex:rxjava:1.3.3'
     implementation 'io.reactivex:rxandroid:1.2.1'
+
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.5.2'
 }
