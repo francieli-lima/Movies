@@ -1,4 +1,4 @@
-package br.com.francielilima.models
+package br.com.francielilima.movies.models
 
 import com.google.gson.annotations.SerializedName
 

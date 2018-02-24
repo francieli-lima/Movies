@@ -5,8 +5,13 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import br.com.francielilima.movies.R
+import br.com.francielilima.movies.utils.adapters.DashboardAdapter
+import br.com.francielilima.movies.utils.interfaces.RecyclerViewClickListener
+import kotlinx.android.synthetic.main.activity_main.*
 
-class DashboardActivity: AppCompatActivity() {
+class DashboardActivity: AppCompatActivity(), RecyclerViewClickListener {
+
+    lateinit var adapter: DashboardAdapter
 
     var viewModel: DashboardViewModel? = null
 
@@ -16,16 +21,27 @@ class DashboardActivity: AppCompatActivity() {
 
         viewModel = ViewModelProviders.of(this).get(DashboardViewModel::class.java)
 
-        registerObservables()
-        fetchMovies()
+        setup()
     }
 
     //region Private
 
-    private fun registerObservables(){
+    private fun setup() {
+        registerObservables()
+        setupRecyclerView()
+        fetchMovies()
+    }
+
+    private fun setupRecyclerView() {
+        adapter = DashboardAdapter(this, this)
+        recyclerView.adapter = adapter
+
+    }
+
+    private fun registerObservables() {
         viewModel?.discoverMoviesData?.observe(this, Observer {
             it?.let {
-                //TODO
+                adapter.items = it.movies
             }
         })
     }
@@ -38,4 +54,8 @@ class DashboardActivity: AppCompatActivity() {
         viewModel?.fetchDiscoverMovies()
     }
     //endregion
+
+    override fun onRecyclerViewItemClicked(movieId: Any) {
+        viewModel?.onMovieClicked(movieId as Long, this)
+    }
 }
