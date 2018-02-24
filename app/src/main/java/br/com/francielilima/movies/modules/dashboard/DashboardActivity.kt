@@ -11,9 +11,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class DashboardActivity: AppCompatActivity(), RecyclerViewClickListener {
 
-    lateinit var adapter: DashboardAdapter
+    private lateinit var adapter: DashboardAdapter
 
-    var viewModel: DashboardViewModel? = null
+    private var viewModel: DashboardViewModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
