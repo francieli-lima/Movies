@@ -2,9 +2,9 @@
 
 An android app that is fed by https://www.themoviedb.org, built with Kotlin using MVVM archtecture.
 
-![](screenshots/dashboard.png)
-![](screenshots/details.png)
-![](screenshots/see_all.png)
+![](screenshots/dashboard.png | width=100)
+![](screenshots/details.png | width=100)
+![](screenshots/see_all.png | width=100)
 
 Dependencies used
 --------
