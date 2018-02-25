@@ -1,3 +1,20 @@
 <resources>
-    <string name="app_name">Movies</string>
+    <string name="movie">Movie</string>
+
+    <string name="quote">This is the beginning of a beautiful friendship."</string>
+    <string name="quote_author">Casablanca, 1942</string>
+
+    <string name="discover">Top picks for you</string>
+    <string name="now_playing">On theaters</string>
+    <string name="popular">Popular movies</string>
+    <string name="top_ratings">Top ratings</string>
+    <string name="see_all">See all</string>
+    <string name="ok">OK</string>
+    <string name="retry">Retry</string>
+
+    <string name="problem">Yo, Adrian!</string>
+    <string name="no_internet_sierra_madre">Internet? We ain\'t got no internet!</string>
+
+    <string name="title_date">%1$s (%2$s)</string>
+
 </resources>

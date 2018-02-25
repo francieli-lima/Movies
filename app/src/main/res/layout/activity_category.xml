@@ -11,37 +11,26 @@
     tools:context="br.com.francielilima.movies.modules.dashboard.DashboardActivity">
 
     <TextView
-        android:id="@+id/textViewQuote"
+        android:id="@+id/textViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:fontFamily="@font/lato_regular"
+        android:gravity="start|bottom"
+        android:text="@string/movie"
         android:layout_marginTop="8dp"
-        android:fontFamily="@font/lato_light_italic"
-        android:gravity="start|bottom"
-        android:text="@string/quote"
-        android:textColor="@color/white"
-        android:textSize="22sp"/>
-
-    <TextView
-        android:id="@+id/textViewQuoteAuthor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textViewQuote"
         android:layout_marginBottom="24dp"
-        android:fontFamily="@font/lato_light"
-        android:gravity="start|bottom"
-        android:text="@string/quote_author"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:textSize="26sp"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/textViewQuoteAuthor"
+        android:layout_below="@+id/textViewTitle"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-        tools:listitem="@layout/row_dashboard"/>
+        tools:listitem="@layout/row_movie"/>
 
     <include
         android:id="@+id/viewLoading"
