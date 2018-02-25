@@ -1,2 +1,9 @@
 <resources>
+    <string name="movie">Movie</string>
+    
+    <string name="discover">Top picks for you</string>
+    <string name="now_playing">On theaters</string>
+    <string name="popular">Popular movies</string>
+    <string name="top_ratings">Top ratings</string>
+    <string name="see_all">See all</string>
 </resources>

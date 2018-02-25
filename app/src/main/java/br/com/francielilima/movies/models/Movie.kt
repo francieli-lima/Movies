@@ -26,6 +26,8 @@ open class Movie {
     @SerializedName("genre_ids")
     var genreIds: List<Long> = listOf()
 
+    var genres: List<Genre> = listOf()
+
     var overview: String? = null
 
     @SerializedName("release_date")

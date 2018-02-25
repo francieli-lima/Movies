@@ -3,26 +3,38 @@ package br.com.francielilima.movies.utils.view_holders
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import br.com.francielilima.movies.models.Movie
-import br.com.francielilima.movies.utils.Constants
+import br.com.francielilima.movies.utils.adapters.MovieAdapter
 import br.com.francielilima.movies.utils.interfaces.RecyclerViewClickListener
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.row_movie.view.*
+import br.com.francielilima.movies.utils.network.pokos.MovieResults
+import kotlinx.android.synthetic.main.row_dashboard.view.*
+import android.support.v7.widget.LinearLayoutManager
+import br.com.francielilima.movies.R
+import br.com.francielilima.movies.utils.enums.MovieResultCategory
+
 
 class DashboardViewHolder(itemView: View, listener: RecyclerViewClickListener, private val context: Context): RecyclerView.ViewHolder(itemView) {
 
+    private var adapter: MovieAdapter = MovieAdapter(context, listener)
+
     init {
-        itemView.setOnClickListener {
-            movie?.id?.let { listener.onRecyclerViewItemClicked(it) }
-        }
+        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        itemView.recyclerView.adapter = adapter
+        itemView.recyclerView.layoutManager = layoutManager
     }
 
-    var movie: Movie? = null
+    var movies: MovieResults? = null
         set(value) {
             field = value
 
-            Picasso.with(context)
-                    .load("${Constants.URLs.smallImageURL}${value?.posterPath}")
-                    .into(itemView.imageViewPoster)
+            itemView.textViewTitle.text = when (adapterPosition) {
+                MovieResultCategory.DISCOVER.ordinal -> context.getString(R.string.discover)
+                MovieResultCategory.TOP_RATED.ordinal -> context.getString(R.string.top_ratings)
+                MovieResultCategory.POPULAR.ordinal -> context.getString(R.string.popular)
+                else -> context.getString(R.string.now_playing)
+            }
+
+            value?.movies?.let {
+                adapter.items = it
+            }
         }
 }
