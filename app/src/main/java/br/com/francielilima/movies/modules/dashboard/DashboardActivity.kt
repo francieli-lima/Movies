@@ -5,6 +5,8 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.transition.TransitionManager
+import android.view.View
 import br.com.francielilima.movies.R
 import br.com.francielilima.movies.utils.Constants
 import br.com.francielilima.movies.utils.adapters.DashboardAdapter
@@ -30,6 +32,8 @@ class DashboardActivity: AppCompatActivity(), RecyclerViewClickListener {
     //region Private
 
     private fun setup() {
+        showLoading()
+
         registerObservables()
         setupRecyclerView()
         fetchMovies()
@@ -45,9 +49,21 @@ class DashboardActivity: AppCompatActivity(), RecyclerViewClickListener {
     private fun registerObservables() {
         viewModel?.discoverMoviesData?.observe(this, Observer {
             it?.let {
+                hideLoading()
+
                 adapter.items = it
             }
         })
+    }
+
+    private fun showLoading() {
+        viewLoading.visibility = View.VISIBLE
+    }
+
+    private fun hideLoading() {
+        TransitionManager.beginDelayedTransition(container)
+
+        viewLoading.visibility = View.GONE
     }
 
     //endregion
