@@ -65,7 +65,7 @@ class DashboardViewModel: ViewModel() {
         context.startActivity(intent)
     }
 
-    fun onSeeAllClicked(position: Long, context: Context) {
+    fun onSeeAllClicked(position: Int, context: Context) {
         val intent = Intent(context, CategoryActivity::class.java)
         intent.putExtra(Constants.IntentExtras.MOVIE_POSITION, position)
         context.startActivity(intent)

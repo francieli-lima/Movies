@@ -20,9 +20,9 @@
         android:gravity="start|bottom"
         android:text="@string/movie"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="24dp"
         android:textColor="@color/white"
-        android:textSize="30sp"/>
+        android:textSize="26sp"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
