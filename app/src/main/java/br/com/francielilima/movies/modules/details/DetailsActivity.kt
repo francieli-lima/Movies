@@ -57,9 +57,5 @@ class DetailsActivity: AppCompatActivity() {
         textViewRating.text = movie.rating.toString()
     }
 
-    private fun fetchMovieDetails() {
-
-    }
-
     //endregion
 }

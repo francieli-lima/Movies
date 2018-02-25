@@ -6,6 +6,7 @@ import android.view.View
 import br.com.francielilima.movies.models.Genre
 import br.com.francielilima.movies.models.Movie
 import br.com.francielilima.movies.utils.Constants
+import br.com.francielilima.movies.utils.enums.ClickCategory
 import br.com.francielilima.movies.utils.extensions.text
 import br.com.francielilima.movies.utils.extensions.year
 import br.com.francielilima.movies.utils.interfaces.RecyclerViewClickListener
@@ -18,7 +19,7 @@ class MovieViewHolder(itemView: View, listener: RecyclerViewClickListener, priva
 
     init {
         itemView.setOnClickListener {
-            movie?.id?.let { listener.onRecyclerViewItemClicked(it) }
+            movie?.id?.let { listener.onRecyclerViewItemClicked(it, ClickCategory.MOVIE) }
         }
     }
 

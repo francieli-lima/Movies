@@ -13,8 +13,9 @@ import br.com.francielilima.movies.utils.adapters.DashboardAdapter
 import br.com.francielilima.movies.utils.interfaces.RecyclerViewClickListener
 import kotlinx.android.synthetic.main.activity_main.*
 import android.support.v7.app.AlertDialog
+import br.com.francielilima.movies.utils.enums.ClickCategory
+import br.com.francielilima.movies.utils.enums.MovieResultCategory
 import br.com.francielilima.movies.utils.extensions.isThereInternet
-
 
 class DashboardActivity: AppCompatActivity(), RecyclerViewClickListener {
 
@@ -89,7 +90,12 @@ class DashboardActivity: AppCompatActivity(), RecyclerViewClickListener {
     }
     //endregion
 
-    override fun onRecyclerViewItemClicked(movieId: Any) {
-        viewModel?.onMovieClicked(movieId as Long, this)
+    override fun onRecyclerViewItemClicked(id: Any, category: ClickCategory) {
+        when (category) {
+            ClickCategory.MOVIE -> viewModel?.onMovieClicked(id as Long, this)
+            ClickCategory.SEE_MORE -> {
+                viewModel?.onSeeAllClicked((id as Int).toLong(), this)
+            }
+        }
     }
 }

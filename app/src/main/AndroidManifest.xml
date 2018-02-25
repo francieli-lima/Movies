@@ -19,8 +19,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".modules.details.DetailsActivity">
-        </activity>
+        <activity android:name=".modules.details.DetailsActivity"/>
+
+        <activity android:name=".modules.categories.CategoryActivity"/>
     </application>
 
 </manifest>

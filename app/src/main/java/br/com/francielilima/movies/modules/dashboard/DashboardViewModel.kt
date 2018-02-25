@@ -7,8 +7,10 @@ import android.content.Intent
 import android.util.Log
 import br.com.francielilima.movies.models.Genre
 import br.com.francielilima.movies.models.Movie
+import br.com.francielilima.movies.modules.categories.CategoryActivity
 import br.com.francielilima.movies.modules.details.DetailsActivity
 import br.com.francielilima.movies.utils.Constants
+import br.com.francielilima.movies.utils.extensions.withGenres
 import br.com.francielilima.movies.utils.network.ApiDataManager
 import br.com.francielilima.movies.utils.network.pokos.GenreResults
 import br.com.francielilima.movies.utils.network.pokos.MovieResults
@@ -31,10 +33,10 @@ class DashboardViewModel: ViewModel() {
 
         Observable.merge(
                 ApiDataManager.getMovieGenresObservable(),
-                ApiDataManager.discoverMoviesObservable(),
-                ApiDataManager.getTopRatedMoviesObservable(),
-                ApiDataManager.getPopularMoviesObservable(),
-                ApiDataManager.getNowPlayingMoviesObservable())
+                ApiDataManager.discoverMoviesObservable(1),
+                ApiDataManager.getTopRatedMoviesObservable(1),
+                ApiDataManager.getPopularMoviesObservable(1),
+                ApiDataManager.getNowPlayingMoviesObservable(1))
                 ?.subscribeOn(Schedulers.io())
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe({
@@ -44,7 +46,7 @@ class DashboardViewModel: ViewModel() {
                         1 -> genres = (it as GenreResults).genres
                         5 -> {
                             movies.add(it as MovieResults)
-                            discoverMoviesData.value = setGenres(movies)
+                            discoverMoviesData.value = movies.withGenres(genres)
                         }
                         else -> movies.add(it as MovieResults)
                     }
@@ -63,24 +65,10 @@ class DashboardViewModel: ViewModel() {
         context.startActivity(intent)
     }
 
-    //endregion
-
-    //region Private
-
-    private fun setGenres(results: List<MovieResults>): List<MovieResults> {
-        return results.map {
-            it.movies.map { movie ->
-                val genres = arrayListOf<Genre>()
-                movie.genreIds.forEach { id ->
-                    genres.addAll(this.genres.filter { it.id == id })
-                }
-
-                movie.genres = genres
-
-                movie
-            }
-            it
-        }
+    fun onSeeAllClicked(position: Long, context: Context) {
+        val intent = Intent(context, CategoryActivity::class.java)
+        intent.putExtra(Constants.IntentExtras.MOVIE_POSITION, position)
+        context.startActivity(intent)
     }
 
     //endregion

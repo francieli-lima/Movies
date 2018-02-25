@@ -10,9 +10,9 @@ import br.com.francielilima.movies.utils.interfaces.RecyclerViewClickListener
 import br.com.francielilima.movies.utils.view_holders.MovieViewHolder
 
 class MovieAdapter(private val context: Context, private val listener: RecyclerViewClickListener): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    var items = listOf<Movie>()
+    var items = arrayListOf<Movie>()
         set(value) {
-            field = value
+            field.addAll(value)
             notifyDataSetChanged()
         }
 
