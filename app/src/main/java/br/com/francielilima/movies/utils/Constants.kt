@@ -9,5 +9,6 @@ class Constants {
 
     object IntentExtras {
         val MOVIE_ID = "MOVIE_ID"
+        val MOVIE_POSITION = "MOVIE_POSITION"
     }
 }

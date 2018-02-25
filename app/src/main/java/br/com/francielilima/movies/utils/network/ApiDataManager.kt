@@ -7,32 +7,32 @@ import rx.Observable
 
 object ApiDataManager {
 
-    fun discoverMoviesObservable(): Observable<MovieResults>? {
+    fun discoverMoviesObservable(page: Long): Observable<MovieResults>? {
         val retrofit = RetrofitUtil.getRetrofit()
         val client = retrofit.create(ApiClientUtil::class.java)
 
-        return client.discover()
+        return client.discover(page)
     }
 
-    fun getNowPlayingMoviesObservable(): Observable<MovieResults>? {
+    fun getNowPlayingMoviesObservable(page: Long): Observable<MovieResults>? {
         val retrofit = RetrofitUtil.getRetrofit()
         val client = retrofit.create(ApiClientUtil::class.java)
 
-        return client.getNowPlaying()
+        return client.getNowPlaying(page)
     }
 
-    fun getPopularMoviesObservable(): Observable<MovieResults>? {
+    fun getPopularMoviesObservable(page: Long): Observable<MovieResults>? {
         val retrofit = RetrofitUtil.getRetrofit()
         val client = retrofit.create(ApiClientUtil::class.java)
 
-        return client.getPopular()
+        return client.getPopular(page)
     }
 
-    fun getTopRatedMoviesObservable(): Observable<MovieResults>? {
+    fun getTopRatedMoviesObservable(page: Long): Observable<MovieResults>? {
         val retrofit = RetrofitUtil.getRetrofit()
         val client = retrofit.create(ApiClientUtil::class.java)
 
-        return client.getTopRated()
+        return client.getTopRated(page)
     }
 
     fun getLatestMovieObservable(): Observable<Movie>? {

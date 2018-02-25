@@ -5,7 +5,6 @@ import java.util.*
 
 fun String.year(): String {
     if (this.isNotEmpty()) {
-
         return try {
             val format = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
             val calendar = Calendar.getInstance()

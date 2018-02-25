@@ -8,11 +8,11 @@ import br.com.francielilima.movies.utils.interfaces.RecyclerViewClickListener
 import br.com.francielilima.movies.utils.network.pokos.MovieResults
 import kotlinx.android.synthetic.main.row_dashboard.view.*
 import android.support.v7.widget.LinearLayoutManager
-import br.com.francielilima.movies.R
+import android.util.Log
+import br.com.francielilima.movies.utils.enums.ClickCategory
 import br.com.francielilima.movies.utils.enums.MovieResultCategory
 
-
-class DashboardViewHolder(itemView: View, listener: RecyclerViewClickListener, private val context: Context): RecyclerView.ViewHolder(itemView) {
+class DashboardViewHolder(itemView: View, var listener: RecyclerViewClickListener, private val context: Context): RecyclerView.ViewHolder(itemView) {
 
     private var adapter: MovieAdapter = MovieAdapter(context, listener)
 
@@ -26,15 +26,14 @@ class DashboardViewHolder(itemView: View, listener: RecyclerViewClickListener, p
         set(value) {
             field = value
 
-            itemView.textViewTitle.text = when (adapterPosition) {
-                MovieResultCategory.DISCOVER.ordinal -> context.getString(R.string.discover)
-                MovieResultCategory.TOP_RATED.ordinal -> context.getString(R.string.top_ratings)
-                MovieResultCategory.POPULAR.ordinal -> context.getString(R.string.popular)
-                else -> context.getString(R.string.now_playing)
-            }
+            itemView.textViewTitle.text = MovieResultCategory.from(adapterPosition)?.title?.let { context.getString(it) }
 
             value?.movies?.let {
-                adapter.items = it
+                adapter.items = ArrayList(it)
+            }
+
+            itemView.buttonSeeAll.setOnClickListener {
+                listener.onRecyclerViewItemClicked(adapterPosition, ClickCategory.SEE_MORE)
             }
         }
 }
