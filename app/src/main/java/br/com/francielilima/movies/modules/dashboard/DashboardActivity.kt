@@ -2,17 +2,19 @@ package br.com.francielilima.movies.modules.dashboard
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.DialogInterface
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.transition.TransitionManager
 import android.view.View
 import br.com.francielilima.movies.R
-import br.com.francielilima.movies.utils.Constants
 import br.com.francielilima.movies.utils.adapters.DashboardAdapter
 import br.com.francielilima.movies.utils.interfaces.RecyclerViewClickListener
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
+import android.support.v7.app.AlertDialog
+import br.com.francielilima.movies.utils.extensions.isThereInternet
+
 
 class DashboardActivity: AppCompatActivity(), RecyclerViewClickListener {
 
@@ -66,12 +68,24 @@ class DashboardActivity: AppCompatActivity(), RecyclerViewClickListener {
         viewLoading.visibility = View.GONE
     }
 
+    private fun showError(message: String) {
+        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+
+        builder.setTitle(getString(R.string.problem))
+                .setMessage(message)
+                .setCancelable(false)
+                .setPositiveButton(getString(R.string.retry), DialogInterface.OnClickListener { dialog, _ ->
+                    fetchMovies()
+                })
+                .show()
+    }
+
     //endregion
 
     //region ViewModel Calls
 
     private fun fetchMovies() {
-        viewModel?.fetchDiscoverMovies()
+        if (isThereInternet()) viewModel?.fetchDiscoverMovies() else showError(getString(R.string.no_internet_sierra_madre))
     }
     //endregion
 
