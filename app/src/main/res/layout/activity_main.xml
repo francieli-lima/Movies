@@ -10,10 +10,36 @@
     android:padding="16dp"
     tools:context="br.com.francielilima.movies.modules.dashboard.DashboardActivity">
 
+    <TextView
+        android:id="@+id/textViewQuote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/lato_light_italic"
+        android:gravity="start|bottom"
+        android:text="@string/quote"
+        android:textColor="@color/white"
+        android:textSize="22sp"/>
+
+    <TextView
+        android:id="@+id/textViewQuoteAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textViewQuote"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="@font/lato_light"
+        android:gravity="start|bottom"
+        android:text="@string/quote_author"
+        android:textColor="@color/white"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/textViewQuoteAuthor"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager"
         tools:listitem="@layout/row_dashboard"/>
 

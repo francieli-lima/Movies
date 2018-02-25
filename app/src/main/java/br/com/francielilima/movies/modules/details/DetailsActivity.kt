@@ -10,7 +10,7 @@ import br.com.francielilima.movies.utils.Constants
 import br.com.francielilima.movies.utils.extensions.text
 import br.com.francielilima.movies.utils.extensions.year
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.view_details.*
+import kotlinx.android.synthetic.main.activity_details.*
 
 class DetailsActivity: AppCompatActivity() {
 
@@ -18,7 +18,7 @@ class DetailsActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.view_details)
+        setContentView(R.layout.activity_details)
 
         viewModel = ViewModelProviders.of(this).get(DetailsViewModel::class.java)
         viewModel?.extras = intent.extras
