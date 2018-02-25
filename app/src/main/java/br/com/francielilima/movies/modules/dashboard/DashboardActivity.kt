@@ -94,7 +94,7 @@ class DashboardActivity: AppCompatActivity(), RecyclerViewClickListener {
         when (category) {
             ClickCategory.MOVIE -> viewModel?.onMovieClicked(id as Long, this)
             ClickCategory.SEE_MORE -> {
-                viewModel?.onSeeAllClicked((id as Int).toLong(), this)
+                viewModel?.onSeeAllClicked(id as Int, this)
             }
         }
     }
