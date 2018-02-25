@@ -6,6 +6,8 @@ import android.view.View
 import br.com.francielilima.movies.models.Genre
 import br.com.francielilima.movies.models.Movie
 import br.com.francielilima.movies.utils.Constants
+import br.com.francielilima.movies.utils.extensions.text
+import br.com.francielilima.movies.utils.extensions.year
 import br.com.francielilima.movies.utils.interfaces.RecyclerViewClickListener
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.row_movie.view.*
@@ -25,35 +27,11 @@ class MovieViewHolder(itemView: View, listener: RecyclerViewClickListener, priva
             field = value
 
             itemView.textViewTitle.text = value?.title
-            itemView.textViewGenres.text = getGenresText(value?.genres)
-            itemView.textViewReleaseDate.text = getReleaseYear(value?.releaseDate)
+            itemView.textViewGenres.text = value?.genres?.text()
+            itemView.textViewReleaseDate.text = value?.releaseDate?.year()
 
             Picasso.with(context)
                     .load("${Constants.URLs.mediumImageURL}${value?.backgroundPath}")
                     .into(itemView.imageViewPoster)
         }
-
-
-    //region Private
-
-    private fun getGenresText(genres: List<Genre>?): String {
-        var genreText = ""
-        genres?.forEachIndexed { index, genre ->
-            genreText += "${genre.name}"
-
-            if (index != genres.size - 1) genreText += ", "
-        }
-
-        return genreText
-    }
-
-    private fun getReleaseYear(date: String?): String {
-        val format = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        val calendar = Calendar.getInstance()
-        calendar.time = format.parse(date)
-
-        return calendar.get(Calendar.YEAR).toString()
-    }
-
-    //endregion
 }
