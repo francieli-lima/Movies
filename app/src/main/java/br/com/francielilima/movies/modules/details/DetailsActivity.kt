@@ -39,14 +39,14 @@ class DetailsActivity: AppCompatActivity() {
     }
 
     private fun setupViews(movie: Movie) {
+        //most titles don't support bigger sizes
         Picasso.with(this)
-                .load("${Constants.URLs.bigImageURL}${movie.backgroundPath}")
+                .load("${Constants.URLs.mediumImageURL}${movie.backgroundPath}")
                 .into(imageViewBackground)
 
         Picasso.with(this)
                 .load("${Constants.URLs.mediumImageURL}${movie.posterPath}")
                 .into(imageViewPoster)
-
 
     }
 

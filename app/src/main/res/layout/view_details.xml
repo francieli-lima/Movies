@@ -8,12 +8,14 @@
     <ImageView
         android:id="@+id/imageViewBackground"
         android:layout_width="match_parent"
+        android:scaleType="centerCrop"
         android:layout_height="match_parent"/>
 
     <View
         android:id="@+id/viewOverlay"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_opacy_drawable"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -36,10 +38,6 @@
             android:layout_marginTop="30dp"
             android:background="@color/white">
 
-
         </RelativeLayout>
-
     </RelativeLayout>
-
-
 </RelativeLayout>
