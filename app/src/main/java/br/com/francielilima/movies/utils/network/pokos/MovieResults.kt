@@ -3,7 +3,7 @@ package br.com.francielilima.movies.utils.network.pokos
 import br.com.francielilima.movies.models.Movie
 import com.google.gson.annotations.SerializedName
 
-open class DiscoverMovies {
+open class MovieResults {
 
     var page: Long = 0
 
