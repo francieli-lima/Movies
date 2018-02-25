@@ -11,4 +11,7 @@
 
     <string name="problem">Yo, Adrian!</string>
     <string name="no_internet_sierra_madre">Internet? We ain\'t got no internet!</string>
+
+    <string name="title_date">%1$s (%2$s)</string>
+
 </resources>
