@@ -8,11 +8,11 @@ import br.com.francielilima.movies.utils.interfaces.RecyclerViewClickListener
 import br.com.francielilima.movies.utils.network.pokos.MovieResults
 import kotlinx.android.synthetic.main.row_dashboard.view.*
 import android.support.v7.widget.LinearLayoutManager
-import br.com.francielilima.movies.R
+import android.util.Log
 import br.com.francielilima.movies.utils.enums.ClickCategory
 import br.com.francielilima.movies.utils.enums.MovieResultCategory
 
-class DashboardViewHolder(itemView: View, listener: RecyclerViewClickListener, private val context: Context): RecyclerView.ViewHolder(itemView) {
+class DashboardViewHolder(itemView: View, var listener: RecyclerViewClickListener, private val context: Context): RecyclerView.ViewHolder(itemView) {
 
     private var adapter: MovieAdapter = MovieAdapter(context, listener)
 
@@ -20,10 +20,6 @@ class DashboardViewHolder(itemView: View, listener: RecyclerViewClickListener, p
         val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         itemView.recyclerView.adapter = adapter
         itemView.recyclerView.layoutManager = layoutManager
-
-        itemView.buttonSeeAll.setOnClickListener {
-            listener.onRecyclerViewItemClicked(adapterPosition, ClickCategory.SEE_MORE)
-        }
     }
 
     var movies: MovieResults? = null
@@ -34,6 +30,10 @@ class DashboardViewHolder(itemView: View, listener: RecyclerViewClickListener, p
 
             value?.movies?.let {
                 adapter.items = ArrayList(it)
+            }
+
+            itemView.buttonSeeAll.setOnClickListener {
+                listener.onRecyclerViewItemClicked(adapterPosition, ClickCategory.SEE_MORE)
             }
         }
 }

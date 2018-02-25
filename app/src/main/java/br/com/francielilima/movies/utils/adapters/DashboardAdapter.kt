@@ -8,6 +8,7 @@ import br.com.francielilima.movies.R
 import br.com.francielilima.movies.utils.interfaces.RecyclerViewClickListener
 import br.com.francielilima.movies.utils.network.pokos.MovieResults
 import br.com.francielilima.movies.utils.view_holders.DashboardViewHolder
+import kotlinx.android.synthetic.main.row_dashboard.view.*
 
 class DashboardAdapter(private val context: Context, private val listener: RecyclerViewClickListener): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var items = listOf<MovieResults>()
