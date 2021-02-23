@@ -1,18 +1,18 @@
 package br.com.francielilima.movies.modules.dashboard
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import android.content.DialogInterface
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.transition.TransitionManager
 import android.view.View
 import br.com.francielilima.movies.R
 import br.com.francielilima.movies.utils.adapters.DashboardAdapter
 import br.com.francielilima.movies.utils.interfaces.RecyclerViewClickListener
 import kotlinx.android.synthetic.main.activity_main.*
-import android.support.v7.app.AlertDialog
+import androidx.appcompat.app.AlertDialog
 import br.com.francielilima.movies.utils.enums.ClickCategory
 import br.com.francielilima.movies.utils.enums.MovieResultCategory
 import br.com.francielilima.movies.utils.extensions.isThereInternet
@@ -75,9 +75,9 @@ class DashboardActivity: AppCompatActivity(), RecyclerViewClickListener {
         builder.setTitle(getString(R.string.problem))
                 .setMessage(message)
                 .setCancelable(false)
-                .setPositiveButton(getString(R.string.retry), DialogInterface.OnClickListener { dialog, _ ->
+                .setPositiveButton(getString(R.string.retry)) { _, _ ->
                     fetchMovies()
-                })
+                }
                 .show()
     }
 

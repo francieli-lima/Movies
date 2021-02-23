@@ -1,10 +1,10 @@
 package br.com.francielilima.movies.modules.categories
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.GridLayoutManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import br.com.francielilima.movies.R
 import br.com.francielilima.movies.utils.adapters.MovieAdapter
 import br.com.francielilima.movies.utils.enums.ClickCategory
@@ -12,7 +12,7 @@ import br.com.francielilima.movies.utils.extensions.isThereInternet
 import br.com.francielilima.movies.utils.interfaces.RecyclerViewClickListener
 import kotlinx.android.synthetic.main.activity_category.*
 import android.nfc.tech.MifareUltralight.PAGE_SIZE
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 
 class CategoryActivity: AppCompatActivity(), RecyclerViewClickListener {
@@ -81,11 +81,7 @@ class CategoryActivity: AppCompatActivity(), RecyclerViewClickListener {
     }
 
     private val recyclerViewOnScrollListener = object: RecyclerView.OnScrollListener() {
-        override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
-            super.onScrollStateChanged(recyclerView, newState)
-        }
-
-        override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
             super.onScrolled(recyclerView, dx, dy)
             val visibleItemCount = layoutManager.childCount
             val totalItemCount = layoutManager.itemCount

@@ -1,9 +1,9 @@
 package br.com.francielilima.movies.modules.details
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import br.com.francielilima.movies.R
 import br.com.francielilima.movies.models.Movie
 import br.com.francielilima.movies.utils.Constants

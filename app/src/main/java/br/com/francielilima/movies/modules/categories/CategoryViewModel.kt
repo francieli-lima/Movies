@@ -1,7 +1,7 @@
 package br.com.francielilima.movies.modules.categories
 
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle

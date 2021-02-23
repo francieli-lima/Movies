@@ -1,13 +1,13 @@
 package br.com.francielilima.movies.utils.view_holders
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import br.com.francielilima.movies.utils.adapters.MovieAdapter
 import br.com.francielilima.movies.utils.interfaces.RecyclerViewClickListener
 import br.com.francielilima.movies.utils.network.pokos.MovieResults
 import kotlinx.android.synthetic.main.row_dashboard.view.*
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.util.Log
 import br.com.francielilima.movies.utils.enums.ClickCategory
 import br.com.francielilima.movies.utils.enums.MovieResultCategory
